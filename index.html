@@ -337,6 +337,14 @@ body::before {
 }
 .locator-svg { display: block; width: 100%; height: 100%; }
 
+/* ── Political overview overlay ───────────────────────────────── */
+.overview-overlay {
+  position: absolute; inset: 0; z-index: 8;
+  display: none;
+  background: var(--parchment);
+}
+.overview-svg { display: block; width: 100%; height: 100%; }
+
 /* ── Audio bar ────────────────────────────────────────────────── */
 .audio-bar {
   border-top: 1px solid var(--border);
@@ -650,6 +658,7 @@ body::before {
       <button class="zoom-btn" title="Zoom in" onclick="zoomBtn(0.65)">＋</button>
       <button class="zoom-btn" title="Zoom out" onclick="zoomBtn(1/0.65)">－</button>
       <button class="zoom-btn" title="Reset view" onclick="resetView()" style="font-size:13px;">⌂</button>
+      <button class="zoom-btn" id="btn-overview" title="207 CE political overview" onclick="toggleOverview()" style="font-size:12px;">🗺</button>
     </div>
 
     <!-- China locator inset -->
@@ -671,6 +680,209 @@ body::before {
           font-family="serif">China · 208 CE</text>
         <!-- Border -->
         <rect width="130" height="100" fill="none" stroke="#C8AA78" stroke-width="1" rx="4"/>
+      </svg>
+    </div>
+
+    <!-- ── Political overview overlay (207 CE) ─── -->
+    <div class="overview-overlay" id="overview-overlay">
+      <svg class="overview-svg" viewBox="0 0 900 640" preserveAspectRatio="xMidYMid meet">
+
+        <!-- Background -->
+        <rect width="900" height="640" fill="#EDE4C8"/>
+
+        <!-- ─── Territory Polygons ─────────────────────────────── -->
+
+        <!-- Xianbei 鮮卑 (N nomads, very light) -->
+        <polygon points="80,80 800,80 895,145 890,185 795,200 640,165 450,155 280,190 80,210"
+          fill="#B0A070" opacity="0.18" stroke="#8B7A5A" stroke-width="0.6"/>
+
+        <!-- Gongsun Kang 公孫康 (NE, teal) -->
+        <polygon points="795,200 890,185 895,295 820,310 790,310 795,200"
+          fill="#508070" opacity="0.40" stroke="#3A6058" stroke-width="0.8"/>
+
+        <!-- Cao Cao 曹操 (Wei — blue, large N block) -->
+        <polygon points="280,190 450,155 640,165 795,200 790,310 720,375 630,415 465,415 405,395 365,355 340,320 280,260 280,190"
+          fill="#5A7A9E" opacity="0.30" stroke="#4A6A8E" stroke-width="0.8"/>
+
+        <!-- Han Sui / Ma Teng 韓遂/馬騰 (NW, purple-gray) -->
+        <polygon points="80,210 280,190 280,260 340,320 280,340 120,320 80,280"
+          fill="#7870A0" opacity="0.30" stroke="#6060A0" stroke-width="0.8"/>
+
+        <!-- Zhang Lu 張魯 Hanzhong (small central) -->
+        <polygon points="280,340 340,320 365,355 330,415 280,430 280,360"
+          fill="#607050" opacity="0.45" stroke="#507040" stroke-width="0.8"/>
+
+        <!-- Liu Zhang 劉璋 Yi / Sichuan (brown, large W) -->
+        <polygon points="80,340 120,320 280,340 280,430 280,490 220,490 130,500 80,460"
+          fill="#8B4A2A" opacity="0.28" stroke="#7A3A1A" stroke-width="0.8"/>
+
+        <!-- Liu Biao 劉表 Jing province (olive, centre-south) -->
+        <polygon points="365,355 465,415 465,475 430,535 340,545 280,490 280,430 330,415 365,355"
+          fill="#8A8A50" opacity="0.32" stroke="#7A7A40" stroke-width="0.8"/>
+
+        <!-- Sun Quan 孫權 Wu (jade, SE) -->
+        <polygon points="465,415 630,415 720,375 762,458 730,555 640,590 510,600 430,535 465,475 465,415"
+          fill="#2A7A6A" opacity="0.28" stroke="#2A6A5A" stroke-width="0.8"/>
+
+        <!-- Shi Xie 士燮 (far S, very muted) -->
+        <polygon points="280,490 340,545 430,535 510,600 460,635 360,638 280,600 280,490"
+          fill="#7A8060" opacity="0.20" stroke="#6A7050" stroke-width="0.6"/>
+
+        <!-- ─── Rivers ──────────────────────────────────────────── -->
+
+        <!-- Yangtze 長江 (shadow + main + shimmer) -->
+        <path d="M 80,455 C 160,448 220,442 280,450 C 325,456 348,464 372,470
+                 C 412,480 442,466 492,452 C 548,437 602,420 662,408
+                 C 722,396 790,380 895,358"
+          fill="none" stroke="#3A6A8A" stroke-width="10" opacity="0.35" stroke-linecap="round"/>
+        <path d="M 80,451 C 160,444 220,438 280,446 C 325,452 348,460 372,466
+                 C 412,476 442,462 492,448 C 548,433 602,416 662,404
+                 C 722,392 790,376 895,354"
+          fill="none" stroke="#4A7A9A" stroke-width="7" opacity="0.70" stroke-linecap="round"/>
+        <path d="M 80,447 C 160,440 220,434 280,442 C 325,448 348,456 372,462
+                 C 412,472 442,458 492,444 C 548,429 602,412 662,400
+                 C 722,388 790,372 895,350"
+          fill="none" stroke="#7AAAC8" stroke-width="2" opacity="0.35" stroke-linecap="round"/>
+
+        <!-- Yellow River 黃河 -->
+        <path d="M 80,322 C 140,314 200,308 262,310 C 322,312 372,320 432,318
+                 C 500,315 560,306 622,298 C 682,291 742,285 822,279"
+          fill="none" stroke="#9AB0C0" stroke-width="4.5" opacity="0.45" stroke-linecap="round"/>
+
+        <!-- ─── Great Wall ───────────────────────────────────────── -->
+        <path d="M 80,222 L 200,210 L 310,208 L 430,204 L 565,200 L 680,202 L 790,212"
+          fill="none" stroke="#8B7A5A" stroke-width="2.5" opacity="0.38"
+          stroke-dasharray="5,3" stroke-linecap="round"/>
+        <text x="365" y="197" text-anchor="middle" font-size="7.5" fill="#8B7A5A" opacity="0.48"
+          font-style="italic" font-family="serif">— Great Wall —</text>
+
+        <!-- ─── City Dots ───────────────────────────────────────── -->
+        <!-- Ye 鄴 (Cao Cao capital) -->
+        <circle cx="528" cy="318" r="4.5" fill="#5A7A9E" stroke="#3A5A7E" stroke-width="0.8"/>
+        <!-- Jianye 建業 (Sun Quan) -->
+        <circle cx="632" cy="412" r="4.5" fill="#2A7A6A" stroke="#1A5A4A" stroke-width="0.8"/>
+        <!-- Xiangyang 襄陽 (Liu Biao) -->
+        <circle cx="452" cy="402" r="3.5" fill="#8A8A50" stroke="#6A6A30" stroke-width="0.8"/>
+        <!-- Chengdu 成都 (Liu Zhang) -->
+        <circle cx="210" cy="428" r="4.5" fill="#8B4A2A" stroke="#7A3A1A" stroke-width="0.8"/>
+        <!-- Chang'an 長安 -->
+        <circle cx="356" cy="353" r="3.5" fill="#8B7A5A" stroke="#6B5A3E" stroke-width="0.8"/>
+        <!-- Nanzheng 南鄭 (Zhang Lu) -->
+        <circle cx="300" cy="385" r="2.5" fill="#607050" stroke="#407030" stroke-width="0.8"/>
+
+        <!-- ─── Battle Area Highlight ───────────────────────────── -->
+        <rect x="392" y="412" width="128" height="76" fill="rgba(200,60,20,0.07)"
+          stroke="#C04020" stroke-width="2" stroke-dasharray="6,3" rx="3"/>
+        <text x="456" y="406" text-anchor="middle" font-size="9" fill="#C04020"
+          font-family="STSong,SimSun,serif" font-weight="bold">赤壁 208 CE</text>
+        <circle cx="498" cy="450" r="4" fill="#C04020" opacity="0.85"/>
+
+        <!-- ─── Faction Labels ─────────────────────────────────── -->
+        <text x="548" y="273" text-anchor="middle" font-size="16" fill="#4A6A8E" opacity="0.82"
+          font-family="STSong,SimSun,'Noto Serif SC',serif" font-weight="bold">曹操</text>
+        <text x="548" y="286" text-anchor="middle" font-size="8.5" fill="#4A6A8E" opacity="0.70"
+          font-family="serif" font-style="italic">Cao Cao · Wei 魏</text>
+
+        <text x="640" y="498" text-anchor="middle" font-size="14" fill="#2A6A5A" opacity="0.82"
+          font-family="STSong,SimSun,'Noto Serif SC',serif" font-weight="bold">孫權</text>
+        <text x="640" y="510" text-anchor="middle" font-size="8.5" fill="#2A6A5A" opacity="0.70"
+          font-family="serif" font-style="italic">Sun Quan · Wu 吳</text>
+
+        <text x="384" y="476" text-anchor="middle" font-size="13" fill="#7A7A30" opacity="0.82"
+          font-family="STSong,SimSun,'Noto Serif SC',serif" font-weight="bold">劉表</text>
+        <text x="384" y="488" text-anchor="middle" font-size="8" fill="#7A7A30" opacity="0.70"
+          font-family="serif" font-style="italic">Liu Biao · Jing 荊</text>
+
+        <text x="162" y="415" text-anchor="middle" font-size="13" fill="#6A3020" opacity="0.82"
+          font-family="STSong,SimSun,'Noto Serif SC',serif" font-weight="bold">劉璋</text>
+        <text x="162" y="427" text-anchor="middle" font-size="8" fill="#6A3020" opacity="0.70"
+          font-family="serif" font-style="italic">Liu Zhang · Yi 益</text>
+
+        <text x="150" y="273" text-anchor="middle" font-size="10" fill="#5858A0" opacity="0.78"
+          font-family="STSong,SimSun,'Noto Serif SC',serif" font-weight="bold">韓遂</text>
+        <text x="150" y="284" text-anchor="middle" font-size="7.5" fill="#5858A0" opacity="0.68"
+          font-family="serif" font-style="italic">Han Sui / Ma Teng</text>
+
+        <text x="312" y="385" text-anchor="middle" font-size="9" fill="#405030" opacity="0.80"
+          font-family="STSong,SimSun,'Noto Serif SC',serif" font-weight="bold">張魯</text>
+        <text x="312" y="395" text-anchor="middle" font-size="7" fill="#405030" opacity="0.70"
+          font-family="serif" font-style="italic">Zhang Lu</text>
+
+        <text x="848" y="246" text-anchor="middle" font-size="8.5" fill="#386858" opacity="0.78"
+          font-family="STSong,SimSun,'Noto Serif SC',serif" font-weight="bold">公孫康</text>
+        <text x="848" y="256" text-anchor="middle" font-size="7" fill="#386858" opacity="0.68"
+          font-family="serif" font-style="italic">Gongsun Kang</text>
+
+        <text x="450" y="128" text-anchor="middle" font-size="13" fill="#8B7A50" opacity="0.42"
+          font-family="serif" font-style="italic" letter-spacing="2">Xianbei · 鮮卑</text>
+
+        <text x="370" y="568" text-anchor="middle" font-size="9" fill="#5A6050" opacity="0.65"
+          font-family="serif" font-style="italic">Shi Xie 士燮</text>
+
+        <!-- ─── River Labels ───────────────────────────────────── -->
+        <text x="185" y="440" font-size="8" fill="#4A7A9A" opacity="0.65" font-style="italic"
+          font-family="serif">長江 Yangtze</text>
+        <text x="228" y="300" font-size="7.5" fill="#7A9AB0" opacity="0.55" font-style="italic"
+          font-family="serif">黃河 Yellow River</text>
+
+        <!-- ─── City Labels ────────────────────────────────────── -->
+        <text x="540" y="312" font-size="8.5" fill="#1A1208"
+          font-family="STSong,SimSun,serif">鄴 Ye (Wei Capital)</text>
+        <text x="644" y="407" font-size="8.5" fill="#1A1208"
+          font-family="STSong,SimSun,serif">建業 Jianye</text>
+        <text x="440" y="397" text-anchor="end" font-size="8" fill="#1A1208"
+          font-family="STSong,SimSun,serif">襄陽 Xiangyang</text>
+        <text x="222" y="422" font-size="8.5" fill="#1A1208"
+          font-family="STSong,SimSun,serif">成都 Chengdu</text>
+        <text x="344" y="347" text-anchor="end" font-size="7.5" fill="#6B5A3E" font-style="italic"
+          font-family="serif">長安 Chang'an</text>
+
+        <!-- ─── Title ──────────────────────────────────────────── -->
+        <text x="450" y="30" text-anchor="middle"
+          font-family="STSong,SimSun,'Noto Serif SC',serif"
+          font-size="19" fill="#1A1208" letter-spacing="3">三國形勢圖</text>
+        <text x="450" y="48" text-anchor="middle"
+          font-family="serif" font-size="10.5" fill="#6B5A3E" font-style="italic">
+          Political Context · 207 CE · Eve of Red Cliff</text>
+
+        <!-- ─── Compass ────────────────────────────────────────── -->
+        <g transform="translate(858,85)" opacity="0.38">
+          <circle cx="0" cy="0" r="18" fill="none" stroke="#8B7A5A" stroke-width="1"/>
+          <text x="0" y="-22" text-anchor="middle" font-size="9" fill="#6B5A3E" font-family="serif">N</text>
+          <path d="M0,-14 L3,0 L0,14 L-3,0 Z" fill="#6B5A3E"/>
+          <path d="M-14,0 L0,3 L14,0 L0,-3 Z" fill="#8B7A5A" opacity="0.6"/>
+        </g>
+
+        <!-- ─── Legend ─────────────────────────────────────────── -->
+        <g transform="translate(14,540)">
+          <rect width="138" height="92" fill="#E8D8AE" rx="3" stroke="#C8AA78" stroke-width="1" opacity="0.93"/>
+          <text x="8" y="14" font-size="8.5" fill="#1A1208" font-family="serif" font-weight="bold">207 CE Factions</text>
+          <rect x="8" y="20" width="9" height="7" fill="#5A7A9E" opacity="0.55"/>
+          <text x="21" y="28" font-size="7.5" fill="#1A1208">Wei 魏 · Cao Cao</text>
+          <rect x="8" y="31" width="9" height="7" fill="#2A7A6A" opacity="0.55"/>
+          <text x="21" y="39" font-size="7.5" fill="#1A1208">Wu 吳 · Sun Quan</text>
+          <rect x="8" y="42" width="9" height="7" fill="#8A8A50" opacity="0.55"/>
+          <text x="21" y="50" font-size="7.5" fill="#1A1208">Jing 荊 · Liu Biao</text>
+          <rect x="8" y="53" width="9" height="7" fill="#8B4A2A" opacity="0.55"/>
+          <text x="21" y="61" font-size="7.5" fill="#1A1208">Yi 益 · Liu Zhang</text>
+          <rect x="8" y="64" width="9" height="7" fill="#7870A0" opacity="0.55"/>
+          <text x="21" y="72" font-size="7.5" fill="#1A1208">NW · Han Sui / Ma Teng</text>
+          <rect x="8" y="75" width="9" height="7" fill="#508070" opacity="0.55"/>
+          <text x="21" y="83" font-size="7.5" fill="#1A1208">NE · Gongsun Kang</text>
+        </g>
+
+        <!-- ─── Return hint ─────────────────────────────────────── -->
+        <text x="450" y="626" text-anchor="middle" font-size="8.5" fill="#8B7A5A" font-style="italic"
+          font-family="serif">Press 🗺 again or × to return to the battle map</text>
+
+        <!-- ─── Close button ───────────────────────────────────── -->
+        <g onclick="toggleOverview()" style="cursor:pointer" transform="translate(880,18)">
+          <circle cx="0" cy="0" r="11" fill="#E8D8AE" stroke="#C8AA78" stroke-width="1.2"/>
+          <text x="0" y="4.5" text-anchor="middle" font-size="13" fill="#6B5A3E">×</text>
+        </g>
+
+        <!-- Border -->
+        <rect width="900" height="640" fill="none" stroke="#C8AA78" stroke-width="2"/>
       </svg>
     </div>
 
@@ -903,6 +1115,15 @@ function zoomBtn(factor) {
 function resetView() {
   VIEW.x = 0; VIEW.y = 0; VIEW.w = 1000; VIEW.h = 700;
   applyViewBox();
+}
+
+function toggleOverview() {
+  const ov  = document.getElementById('overview-overlay');
+  const btn = document.getElementById('btn-overview');
+  const showing = ov.style.display === 'block';
+  ov.style.display = showing ? 'none' : 'block';
+  btn.style.background = showing ? '' : 'var(--ink)';
+  btn.style.color      = showing ? '' : 'var(--parchment)';
 }
 
 /* ────────────────────────────────────────────────────────────
