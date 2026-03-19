@@ -1046,7 +1046,7 @@ function speakThaiSentences(sentences, idx, voice) {
   const text = sentences[idx];
   const utt  = new SpeechSynthesisUtterance(text);
   utt.lang   = 'th-TH';
-  utt.rate   = 0.4;
+  utt.rate   = 0.75;
   utt.pitch  = 1.02;
   utt.voice  = voice;
   utt.onend  = () => {
@@ -1072,7 +1072,7 @@ function speakThaiWords(words, idx, voice) {
   }
   const utt  = new SpeechSynthesisUtterance('…' + words[idx]);
   utt.lang   = 'th-TH';
-  utt.rate   = 0.4;
+  utt.rate   = 0.75;
   utt.pitch  = 1.02;
   utt.voice  = voice;
   utt.onend  = () => {
