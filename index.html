@@ -651,6 +651,35 @@ body::before {
 
       </g><!-- /cities-group -->
 
+      <!-- CHAPTER STORY NODES (clickable numbered badges) -->
+      <g id="chapter-nodes">
+        <!-- Node I — The Stage (overview, top-center) -->
+        <g class="chapter-node" data-ch="0" transform="translate(500,100)" onclick="goTo(0)" style="cursor:pointer">
+          <circle class="ch-node-bg" r="14" fill="#8B7A5A" stroke="#C8AA78" stroke-width="1.5"/>
+          <text text-anchor="middle" dominant-baseline="central" font-size="12" fill="#F2E6C8" font-family="STSong,SimSun,Georgia,serif" font-weight="bold">Ⅰ</text>
+        </g>
+        <!-- Node II — March South (northwest march corridor) -->
+        <g class="chapter-node" data-ch="1" transform="translate(175,200)" onclick="goTo(1)" style="cursor:pointer">
+          <circle class="ch-node-bg" r="14" fill="#8B7A5A" stroke="#C8AA78" stroke-width="1.5"/>
+          <text text-anchor="middle" dominant-baseline="central" font-size="12" fill="#F2E6C8" font-family="STSong,SimSun,Georgia,serif" font-weight="bold">Ⅱ</text>
+        </g>
+        <!-- Node III — Alliance (east, toward Jianye) -->
+        <g class="chapter-node" data-ch="2" transform="translate(640,170)" onclick="goTo(2)" style="cursor:pointer">
+          <circle class="ch-node-bg" r="14" fill="#8B7A5A" stroke="#C8AA78" stroke-width="1.5"/>
+          <text text-anchor="middle" dominant-baseline="central" font-size="12" fill="#F2E6C8" font-family="STSong,SimSun,Georgia,serif" font-weight="bold">Ⅲ</text>
+        </g>
+        <!-- Node IV — Fire (south of river, Red Cliff) -->
+        <g class="chapter-node" data-ch="3" transform="translate(430,548)" onclick="goTo(3)" style="cursor:pointer">
+          <circle class="ch-node-bg" r="14" fill="#8B7A5A" stroke="#C8AA78" stroke-width="1.5"/>
+          <text text-anchor="middle" dominant-baseline="central" font-size="12" fill="#F2E6C8" font-family="STSong,SimSun,Georgia,serif" font-weight="bold">Ⅳ</text>
+        </g>
+        <!-- Node V — Retreat (Huarong swamp, southwest) -->
+        <g class="chapter-node" data-ch="4" transform="translate(200,548)" onclick="goTo(4)" style="cursor:pointer">
+          <circle class="ch-node-bg" r="14" fill="#8B7A5A" stroke="#C8AA78" stroke-width="1.5"/>
+          <text text-anchor="middle" dominant-baseline="central" font-size="12" fill="#F2E6C8" font-family="STSong,SimSun,Georgia,serif" font-weight="bold">Ⅴ</text>
+        </g>
+      </g>
+
     </svg>
 
     <!-- Zoom controls overlay -->
@@ -1001,6 +1030,7 @@ const CHAPTERS = [
     cities: ['fan','xiangyang','jiangling','xiakou','jianye'],
     routes: [],
     highlights: [],
+    focus: [0, 0, 1000, 700],
     quote: '「天下大勢，分久必合，合久必分。」 — 《三國演義》',
     quote_th: '"โลกที่แตกแยกย่อมรวมกัน โลกที่รวมกันย่อมแตกแยก"',
     body: `The year is <strong>208 CE</strong>. The Han dynasty has collapsed into civil war. Three powers now contend for China.<br><br>
@@ -1018,6 +1048,7 @@ In the southwest, the wandering prince <span class="name-zh">劉備</span> <span
     cities: ['fan','xiangyang','jiangling','dangyang','xiakou','wulin'],
     routes: ['cao_advance','liu_retreat'],
     highlights: ['wulin','jiangling'],
+    focus: [0, 80, 680, 476],
     quote: '「寧教我負天下人，休教天下人負我。」— 曹操',
     quote_th: '"차라리 내가 세상 모든 이를 저버릴지언정, 세상 모든 이가 나를 저버리게 하지 않겠다." — เฉาเชา',
     body: `Cao Cao moves with terrifying speed. Crossing south from <strong>Fan</strong> and <strong>Xiangyang</strong>, his army sweeps through Jing Province. The governor Liu Biao dies. His son surrenders without a fight, handing over the vital supply base at <strong>Jiangling</strong> along with a massive fleet of warships.<br><br>
@@ -1034,6 +1065,7 @@ Cao Cao sets up his main camp at <strong>Wulin</strong>, on the north bank of th
     cities: ['jianye','xiakou','chibi','wulin'],
     routes: ['sun_fleet'],
     highlights: ['jianye','chibi'],
+    focus: [200, 100, 750, 525],
     quote: '「此天以君授孤也。」— 孫權',
     quote_th: '"ฟ้ามอบท่านแก่ข้าพเจ้าแล้ว" — ซุนกวน',
     body: `Liu Bei sends his brilliant advisor <span class="name-zh">諸葛亮</span> <span class="name-th">(จูกัดเหลียง)</span> <strong>Zhuge Liang</strong> east to Jianye. There, Sun Quan's advisors are split — some urge surrender, others resist.<br><br>
@@ -1050,6 +1082,7 @@ The alliance is sealed. Zhou Yu is given command of <strong>50,000 Wu troops</st
     cities: ['wulin','chibi'],
     routes: ['sun_fleet','fire_attack'],
     highlights: ['chibi','wulin'],
+    focus: [170, 310, 380, 266],
     quote: '「東風不與周郎便，銅雀春深鎖二喬。」— 杜牧',
     quote_th: '"หากลมตะวันออกไม่ช่วยจิวยี่ เจียวสองคนคงถูกขังในตำหนักทองแดง" — ตู้หมู่',
     body: `Cao Cao's fleet arrives at Wulin. To steady his northern soldiers on the rolling river, he orders the ships chained together — a wall of iron-linked hulls stretching across the Yangtze.<br><br>
@@ -1066,6 +1099,7 @@ Zhou Yu's veteran officer <span class="name-zh">黃蓋</span> <span class="name-
     cities: ['wulin','huarong','xiangyang'],
     routes: ['cao_retreat'],
     highlights: ['huarong'],
+    focus: [80, 280, 400, 280],
     quote: '「雲長義重，必放曹操。」— 諸葛亮',
     quote_th: '"กวนอูมีความกตัญญูสูง เขาย่อมปล่อยเฉาเชาไป" — จูกัดเหลียง',
     body: `Cao Cao's army is shattered. With Wu and Shu forces in pursuit, he flees north through the treacherous swamps and narrow paths of <strong>Huarong Road</strong>.<br><br>
@@ -1090,6 +1124,27 @@ const VIEW = { x: 0, y: 0, w: 1000, h: 700, minW: 180, maxW: 1000 };
 function applyViewBox() {
   document.getElementById('map').setAttribute('viewBox',
     `${VIEW.x} ${VIEW.y} ${VIEW.w} ${VIEW.h}`);
+}
+
+/* Smooth animated pan+zoom to target viewBox [tx,ty,tw,th] */
+let _flyRAF = null;
+function flyTo(tx, ty, tw, th, duration = 900) {
+  if (_flyRAF) cancelAnimationFrame(_flyRAF);
+  const startX = VIEW.x, startY = VIEW.y, startW = VIEW.w, startH = VIEW.h;
+  const startTime = performance.now();
+  function ease(t) { return t < 0.5 ? 2*t*t : -1+(4-2*t)*t; }
+  function step(now) {
+    const t = Math.min(1, (now - startTime) / duration);
+    const e = ease(t);
+    VIEW.x = startX + (tx - startX) * e;
+    VIEW.y = startY + (ty - startY) * e;
+    VIEW.w = startW + (tw - startW) * e;
+    VIEW.h = startH + (th - startH) * e;
+    clampView();
+    applyViewBox();
+    if (t < 1) _flyRAF = requestAnimationFrame(step);
+  }
+  _flyRAF = requestAnimationFrame(step);
 }
 
 function clampView() {
@@ -1351,6 +1406,7 @@ document.addEventListener('DOMContentLoaded', () => {
   bindCityTooltips();
   bindZoomPan();
   goTo(0);
+  MAP_READY = true;
 });
 
 /* ────────────────────────────────────────────────────────────
@@ -1371,11 +1427,15 @@ function buildChapterNav() {
 /* ────────────────────────────────────────────────────────────
    STATE MACHINE
 ──────────────────────────────────────────────────────────── */
+let MAP_READY = false;  // skip flyTo on initial page load
+
 function goTo(n) {
   audioStop();
   hideNoThaiVoiceNote();
   STATE.chapter = Math.max(0, Math.min(n, CHAPTERS.length - 1));
   render();
+  const f = CHAPTERS[STATE.chapter].focus;
+  if (MAP_READY && f) flyTo(f[0], f[1], f[2], f[3]);
 }
 
 function navigate(dir) { goTo(STATE.chapter + dir); }
@@ -1390,6 +1450,7 @@ function render() {
   renderCities(ch);
   renderRoutes(ch);
   renderNavButtons();
+  renderChapterNodes();
 }
 
 /* — Story Panel ——————————————————————————————————————— */
@@ -1399,7 +1460,12 @@ function renderStoryPanel(ch) {
     document.getElementById('ch-btn-' + i).classList.toggle('active', i === STATE.chapter);
   });
 
-  document.getElementById('chapter-body').innerHTML = `
+  const body = document.getElementById('chapter-body');
+  body.classList.remove('fading');
+  // force reflow so re-adding the class triggers the animation
+  void body.offsetWidth;
+  body.classList.add('fading');
+  body.innerHTML = `
     <div class="ch-num">${ch.num}</div>
     <div class="ch-title-zh">${ch.zh}</div>
     <div class="ch-title-th">${ch.th}</div>
@@ -1498,6 +1564,22 @@ function renderNavButtons() {
   document.getElementById('btn-next').disabled = STATE.chapter === CHAPTERS.length - 1;
 }
 
+/* — Chapter nodes ——————————————————————————————————————— */
+function renderChapterNodes() {
+  document.querySelectorAll('.chapter-node').forEach(node => {
+    const ch = parseInt(node.dataset.ch, 10);
+    const isActive = ch === STATE.chapter;
+    const bg = node.querySelector('.ch-node-bg');
+    bg.setAttribute('r',           isActive ? '17' : '13');
+    bg.setAttribute('fill',        isActive ? '#1A1208' : '#8B7A5A');
+    bg.setAttribute('stroke',      isActive ? '#E8C870' : '#C8AA78');
+    bg.setAttribute('stroke-width',isActive ? '2.5'    : '1.5');
+    node.style.filter = isActive
+      ? 'drop-shadow(0 0 6px rgba(232,200,112,0.7))'
+      : '';
+  });
+}
+
 /* ────────────────────────────────────────────────────────────
    ZOOM & PAN  (mouse wheel + drag)
 ──────────────────────────────────────────────────────────── */
@@ -1594,11 +1676,24 @@ function bindCityTooltips() {
 </script>
 
 <style>
-/* Fire pulse animation (must be in a style block, not inline) */
+/* Fire pulse animation */
 @keyframes firePulse {
   0%, 100% { opacity: 1; stroke-width: 5px; }
   50%       { opacity: 0.5; stroke-width: 8px; }
 }
+
+/* Chapter panel fade-in on chapter switch */
+@keyframes chapterFadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.chapter-body.fading { animation: chapterFadeIn 0.38s ease-out forwards; }
+
+/* Chapter node markers */
+.chapter-node { transition: filter 0.3s; }
+.chapter-node .ch-node-bg { transition: r 0.3s, fill 0.3s, stroke 0.3s, stroke-width 0.3s; }
+.chapter-node text { pointer-events: none; font-style: normal; }
+.chapter-node:hover .ch-node-bg { stroke: #E8C870 !important; }
 </style>
 
 </body>
